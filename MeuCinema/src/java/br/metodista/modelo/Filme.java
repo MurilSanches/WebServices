@@ -26,7 +26,7 @@ public class Filme
 
     public void setId(Long id) throws Exception{
         if(id < 0 || id == null)
-            throw new Exception ("ERRO");
+            throw new Exception ("ERRO : id invalido");
         this.id = id;
     }
 
@@ -36,7 +36,7 @@ public class Filme
 
     public void setFilme(String filme) throws Exception{
         if(filme == "" || filme == null)
-            throw new Exception ("ERRO");
+            throw new Exception ("ERRO : filme invalido");
         this.filme = filme;
     }
 
@@ -46,7 +46,7 @@ public class Filme
 
     public void setSinopse(String sinopse) throws Exception{
         if(sinopse == "" || sinopse == null)
-            throw new Exception ("ERRO");
+            throw new Exception ("ERRO : sinopse invalida");
         this.sinopse = sinopse;
     }
 
@@ -56,7 +56,7 @@ public class Filme
 
     public void setGenero(String genero) throws Exception{
         if(genero == "" || genero == null)
-            throw new Exception ("ERRO");
+            throw new Exception ("ERRO : genero invalido");
         this.genero = genero;
     }
 
@@ -66,7 +66,7 @@ public class Filme
 
     public void setDuracao(Integer duracao) throws Exception{
         if(duracao < 0 || duracao == null)
-            throw new Exception ("ERRO");
+            throw new Exception ("ERRO : duracao invalida");
         this.duracao = duracao;
     }
 
@@ -76,8 +76,11 @@ public class Filme
 
     public void setTrailer(String trailer) throws Exception
     {
-        if(trailer == "" || trailer == null)
-            throw new Exception ("ERRO");
         this.trailer = trailer;
+    }  
+    
+    @Override
+    public String toString() {
+        return "Filme{" + "id=" + id + ", filme=" + filme + ", sinopse=" + sinopse + ", genero=" + genero + ", duracao=" + duracao + ", trailer=" + trailer + '}';
     }
 }
