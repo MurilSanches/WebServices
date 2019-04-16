@@ -4,6 +4,7 @@ import java.sql.*;
 import bd.*;
 import bd.core.*;
 import bd.dbos.*;
+import java.util.ArrayList;
 
 public class Filmes
 {

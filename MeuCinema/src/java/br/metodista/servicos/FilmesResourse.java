@@ -5,6 +5,8 @@
  */
 package br.metodista.servicos;
 
+import bd.core.MeuResultSet;
+import bd.daos.Filmes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -42,7 +44,7 @@ public class FilmesResourse {
             {
                 for(bd.dbos.Filme f : filmes) 
                 {
-                    if(f.getId() == Long.valueOf(filmeId)) 
+                    if(f.getId().equals(Long.valueOf(filmeId))) 
                     {
                         Gson gson = new Gson();
                         return gson.toJson(f);
@@ -66,10 +68,12 @@ public class FilmesResourse {
     public FilmesResourse() throws Exception
     {                
         filmes = new ArrayList<bd.dbos.Filme>();
-
-        for(int i = 1; bd.daos.Filmes.cadastrado(i); i++)
-        {
-           filmes.add(bd.daos.Filmes.getFilme(i));           
+        
+        MeuResultSet resultado = Filmes.getFilmes();
+        
+        while(resultado.next())
+        {       
+            filmes.add(new bd.dbos.Filme(resultado.getLong("ID"),resultado.getString("NOME"),resultado.getString("SINOPSE"),resultado.getString("GENERO"),resultado.getInt("DURACAO"),resultado.getString("TRAILER")));            
         }
     }
 }
