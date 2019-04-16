@@ -66,7 +66,10 @@ public class FilmesResourse {
     public FilmesResourse() throws Exception
     {                
         filmes = new ArrayList<bd.dbos.Filme>();
-        for(int i = 0; bd.daos.Filmes.cadastrado(i); i++)
-            filmes.add(bd.daos.Filmes.getFilme(i));        
+
+        for(int i = 1; bd.daos.Filmes.cadastrado(i); i++)
+        {
+           filmes.add(bd.daos.Filmes.getFilme(i));           
+        }
     }
 }
